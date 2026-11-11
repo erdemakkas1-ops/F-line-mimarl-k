@@ -1,0 +1,30 @@
+{
+ "hero_and_final": "a/p_dusk.jpg",
+ "poster_before_webgl": "a/poster.jpg (same dusk frame, 1280 px)",
+ "gallery": {
+  "Salon": "a/p_salon.jpg",
+  "Yatak odası": "a/p_yatak.jpg",
+  "Hol": "a/p_hol.jpg",
+  "Giriş": "a/p_entry.jpg"
+ },
+ "3d_sky": "a/sky.jpg",
+ "3d_textures": [
+  "a/hardwood2_diffuse.jpg",
+  "a/hardwood2_bump.jpg",
+  "a/hardwood2_roughness.jpg",
+  "a/grass.jpg",
+  "a/waternormals.jpg"
+ ],
+ "3d_models": [
+  "a/chair.json",
+  "a/plant.json",
+  "a/vase.json"
+ ],
+ "removed": [
+  "a/p_living.jpg",
+  "a/p_detail.jpg",
+  "a/sofa.json",
+  "a/sofa_0.jpg",
+  "a/sofa_1.jpg"
+ ]
+}
