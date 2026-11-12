@@ -8,6 +8,14 @@ Statik site: `index.html` + `app.js` + `a/` (görseller, derinlik haritaları, y
   Her bölüm tek bir konsept fotoğrafıdır. Fotoğraftan çıkarılan derinlik haritası sayesinde kamera fotoğrafın içinde
   sınırlı ölçüde hareket eder (gerçek paralaks). Bölümler arası geçişler keskin kenarlı çizgi/açıklık maskeleridir;
   iki görsel hiçbir pikselde üst üste binmez. Bu bir 3D gezinti değildir.
+- **Kamera hareketleri (film bölümleri):** Higgsfield ile fotoğraflardan üretilmiş dört yapay zekâ videosu, WebP kare dizisi
+  olarak (`a/v/`) üç geçişe yerleştirildi: yaklaşım → giriş, salon → merdiven → galeri, galeri → yatak odası. Hangi karenin
+  görüneceğini yalnızca kaydırma konumu belirler: video kendi kendine oynamaz, geri kaydırınca hareket geri gider, durunca
+  durur. Her hareket üretildiği fotoğrafla başlar ve biter (1 pikselden az sapma); fotoğraf ↔ film geçişi aynı görüntü
+  üzerinde kesmedir. Kaynak videonun bozulduğu yerler (02: kamera basamakların içinden geçiyor; 03: yatak odası
+  ikileniyor) kullanılmadı; iki parça bir çizgi / kapı açıklığı maskesiyle bağlanır. Bunlar 3D model değildir.
+  WebGL yoksa, `prefers-reduced-motion` açıksa, veri tasarrufu açıksa veya `?nofilm` ile site onaylı 8 fotoğraflık
+  sırayı değişmeden gösterir. Kare listesi ve dışarıda bırakılan aralıklar `asset-manifest.json` → `films` altında.
 - **Tasarım stüdyosu:** aynı kadrajın dört hazır malzeme ön ayarı (Orijinal, Modern Natural, Industrial Luxury,
   Contemporary Premium). Görseller piksel hizalıdır; "Orijinalle karşılaştır" kaydırıcısı bu yüzden çalışır.
   Gerçek zamanlı 3D model değildir.

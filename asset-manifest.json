@@ -185,5 +185,57 @@
    1068
   ],
   "note": "phone screen recording of a reel; used only as design-language reference, not shipped"
+ },
+ "films": {
+  "note": "AI-generated camera moves (Higgsfield) from FLine_Higgsfield_Scroll_Paketi.zip, shipped as WebP frame sequences selected by scroll position. Not 3D geometry. Each move begins/ends on the photograph it was generated from (registered < 1 px). Colour graded per channel at export so first/last frames match those photographs. Source clips: H.264 1284x716, 30 fps, no audio.",
+  "sizes": {
+   "1284": "desktop (pointer: fine)",
+   "854": "touch devices"
+  },
+  "segments": [
+   {
+    "dir": "a/v/1/",
+    "source": "01_Entrance_Approach.mp4",
+    "frames_used": "0-149 (all)",
+    "count": 150,
+    "between": "s2 -> s3"
+   },
+   {
+    "dir": "a/v/2a/",
+    "source": "02_Staircase_Ascent.mp4",
+    "frames_used": "0-62",
+    "count": 63,
+    "between": "s4 -> line transition"
+   },
+   {
+    "dir": "a/v/2b/",
+    "source": "02_Staircase_Ascent.mp4",
+    "frames_used": "93-113",
+    "count": 21,
+    "between": "line transition -> s5"
+   },
+   {
+    "dir": "a/v/3a/",
+    "source": "03a_Gallery_Approach.mp4",
+    "frames_used": "0-43",
+    "count": 44,
+    "between": "s5 -> doorway aperture"
+   },
+   {
+    "dir": "a/v/3b/",
+    "source": "03b_Bedroom_Arrival.mp4",
+    "frames_used": "0-33 (all)",
+    "count": 34,
+    "between": "doorway aperture -> s6"
+   }
+  ],
+  "excluded": {
+   "02_Staircase_Ascent.mp4 frames 63-92": "camera passes through the stair treads; a tread morphs, living room and gallery floor overlap",
+   "03a_Gallery_Approach.mp4 frames 44-61": "a second headboard and bed begin to appear in the left doorway (onset of the duplication the package README describes for 2.5-3.5 s)"
+  },
+  "bytes": {
+   "1284": 19374262,
+   "854": 9237420
+  }
  }
 }
