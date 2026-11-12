@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>F LINE · 3D prototip (çalışma modeli)</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="F LINE konsept villasının gerçek geometriyle kurulmuş çalışma modeli. Fotogerçekçi değildir; mekân kurgusunu ve kamera yolunu gösterir.">
+<meta name="theme-color" content="#efe9df">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231c1510'/%3E%3Cpath d='M10 24V8h12M10 16h9' stroke='%23f5efe4' stroke-width='2.4' fill='none'/%3E%3C/svg%3E">
+<style>
+@font-face{font-family:Fraunces;font-style:normal;font-weight:100 900;font-display:swap;src:url(../a/f/fraunces-latin-opsz-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Fraunces;font-style:normal;font-weight:100 900;font-display:swap;src:url(../a/f/fraunces-latin-ext-opsz-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0,U+2113}
+@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:100 900;font-display:swap;src:url(../a/f/hanken-grotesk-latin-wght-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:100 900;font-display:swap;src:url(../a/f/hanken-grotesk-latin-ext-wght-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0,U+2113}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(../a/f/ibm-plex-mono-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(../a/f/ibm-plex-mono-latin-ext-500-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0,U+2113}
+:root{--bg:#efe9df;--paper:#e6ded1;--line:#cfc5b5;--ink:#1b1612;--soft:#584f45;--orange-ink:#a04a18;--gut:max(20px,env(safe-area-inset-left,0px));
+--display:Fraunces,'Iowan Old Style',Georgia,serif;--body:'Hanken Grotesk','Helvetica Neue',Arial,sans-serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;color-scheme:light}
+@media(min-width:900px){:root{--gut:max(44px,env(safe-area-inset-left,0px))}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+h1,h2,p,ul{margin:0}
+a{color:inherit}
+.mono{font:500 11px/1.45 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.gut{padding-left:var(--gut);padding-right:var(--gut)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--orange-ink);outline-offset:3px}
+header{position:fixed;z-index:5;top:0;left:0;right:0;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(239,233,223,.9);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:baseline;gap:14px;text-decoration:none;min-width:0}
+.brand b{font:600 18px/1 var(--body);letter-spacing:.3em;white-space:nowrap}
+.tagp{padding:4px 8px;border:1px solid var(--orange-ink);color:var(--orange-ink);white-space:nowrap}
+.back{font-size:14.5px;font-weight:600;white-space:nowrap}
+#track{position:relative;height:1100vh}
+#stage{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--bg)}
+@supports(height:1svh){#track{height:1100svh}#stage{height:100svh}}
+#c{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .5s ease}
+html.ready #c{opacity:1}
+#load,#nogl{position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center;color:var(--soft)}
+html.ready #load,html.nogl #load{display:none}
+#nogl{display:none}html.nogl #nogl{display:grid}
+#hud{position:absolute;z-index:2;left:0;bottom:0;width:min(100%,560px);padding-top:18px;padding-bottom:calc(64px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,rgba(239,233,223,.94) 34%)}
+#no{color:var(--orange-ink)}
+#nm{font:300 clamp(30px,4.2vw,54px)/1.04 var(--display);letter-spacing:-.01em;margin:8px 0 10px}
+#tx{max-width:44ch;color:var(--soft);min-height:3.2em}
+#warn{position:absolute;z-index:2;top:76px;right:var(--gut);max-width:min(46ch,calc(100% - 2*var(--gut)));padding:8px 10px;background:rgba(239,233,223,.92);border-left:2px solid var(--orange-ink);color:var(--ink);font-size:10px}
+#chap{position:absolute;z-index:3;left:var(--gut);right:var(--gut);bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;gap:4px 18px;flex-wrap:wrap;padding-top:10px}
+#chap::before,#bar{content:"";position:absolute;left:0;top:0;width:100%;height:1px;background:var(--line)}
+#bar{background:var(--ink);transform-origin:left;transform:scaleX(0)}
+#chap button{min-height:34px;padding:0;border:0;background:none;cursor:pointer;font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+#chap button[aria-current="true"]{color:var(--ink);text-decoration:underline;text-decoration-color:var(--orange-ink);text-underline-offset:5px}
+main{padding-block:clamp(64px,9vw,120px);background:var(--paper)}
+.wrap{max-width:1100px;margin-inline:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(28px,5vw,64px)}
+main h2{font:300 clamp(30px,3.6vw,46px)/1.05 var(--display);grid-column:1/-1;max-width:20ch}
+main h3{font:600 15px var(--body);margin:0 0 10px}
+main ul{padding-left:1.1em;color:var(--soft);font-size:16px}
+main li{margin-bottom:6px}
+.btn{display:inline-flex;align-items:center;min-height:50px;padding:0 24px;background:var(--ink);color:var(--bg);font:600 15px var(--body);text-decoration:none}
+@media (max-width:700px){
+ .brand .tagp{display:none}
+ #chap button{font-size:0;flex:1;position:relative;min-height:40px}
+ #chap{gap:4px;flex-wrap:nowrap}#chap::before,#bar{display:none}
+ #chap button::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:var(--line)}
+ #chap button[aria-current="true"]::after{background:var(--orange-ink)}
+ #warn{left:var(--gut);right:var(--gut);max-width:none}
+ #hud{padding-bottom:calc(62px + env(safe-area-inset-bottom,0px))}
+}
+@media (prefers-reduced-motion:reduce){#c{transition:none}}
+</style>
+</head>
+<body>
+<header class="gut">
+ <a class="brand" href="../" aria-label="F LINE ana sayfa"><b>F LINE</b><span class="mono tagp">3D prototip</span></a>
+ <a class="back" href="../">← Siteye dön</a>
+</header>
+<div id="track">
+ <div id="stage">
+  <canvas id="c" role="img" aria-label="Konsept villanın sade kütle modeli; kamera güney cepheden kuzey girişe, salona, merdivene, üst galeriye ve ebeveyn yatak odasına ilerler"></canvas>
+  <p id="load" class="mono">Model yükleniyor</p>
+  <p id="nogl">Bu cihazda WebGL kullanılamıyor; 3D prototip gösterilemiyor.</p>
+  <p id="warn" class="mono">Çalışma prototipi · gerçek geometri, sade kütle modeli · fotogerçekçi değildir</p>
+  <div id="hud" class="gut"><span id="no" class="mono">01 / 06</span><h1 id="nm">Güney cephe</h1><p id="tx">Havuz ve teras güneyde. Salonun iki kat yüksekliğindeki camı bu cepheye açılır.</p></div>
+  <nav id="chap" aria-label="Bölümler"><span id="bar"></span></nav>
+ </div>
+</div>
+<main class="gut"><div class="wrap">
+ <h2>Bu prototip ne, ne değil.</h2>
+ <div><h3>Gösterdiği</h3><ul><li>Duvar, döşeme, çatı, cam, merdiven ve galeri gerçek geometridir.</li><li>Kamera, modelin içinde tek ve kesintisiz bir yol izler: güney cephe, kuzey giriş, salon, merdiven, üst galeri, yatak odası.</li><li>Kuzey giriş ile güney havuz cephesinin yeri yol boyunca değişmez.</li></ul></div>
+ <div><h3>Göstermediği</h3><ul><li>Fotoğraflardaki taş, ahşap ve ışık kalitesi burada yoktur; yüzeyler düz maket malzemesidir.</li><li>Ölçüler konsept görsellerden tahmin edilmiştir; bir mimari projeye dayanmaz.</li><li>Ana sayfadaki fotoğrafik anlatımın yerini almaz.</li></ul></div>
+ <div><h3>Fotogerçekçi sürüm için gerekenler</h3><ul><li>Ölçülü tek bir mimari model (IFC, FBX ya da glTF).</li><li>Taş, ahşap, doğrama ve zemin için PBR doku setleri.</li><li>Render motorunda fırınlanmış ışık ya da aynı kamera yolundan alınmış kare dizisi.</li><li>Mobilya ve peyzaj modelleri.</li></ul><p style="margin-top:22px"><a class="btn" href="../">Siteye dön</a></p></div>
+</div></main>
+<script src="proto.js" defer></script>
+</body>
+</html>

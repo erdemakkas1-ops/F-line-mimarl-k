@@ -131,7 +131,8 @@
    ],
    "files": [
     "a/c1.webp",
-    "a/c1-1280.webp"
+    "a/c1-1280.webp",
+    "a/t1.webp"
    ]
   },
   {
@@ -144,7 +145,8 @@
    ],
    "files": [
     "a/c2.webp",
-    "a/c2-1280.webp"
+    "a/c2-1280.webp",
+    "a/t2.webp"
    ]
   },
   {
@@ -157,7 +159,8 @@
    ],
    "files": [
     "a/c3.webp",
-    "a/c3-1280.webp"
+    "a/c3-1280.webp",
+    "a/t3.webp"
    ]
   },
   {
@@ -170,13 +173,16 @@
    ],
    "files": [
     "a/c4.webp",
-    "a/c4-1280.webp"
+    "a/c4-1280.webp",
+    "a/t4.webp"
    ]
   }
  ],
  "other": {
   "a/og.jpg": "share preview (from brief image 1)",
-  "a/f/*.woff2": "self-hosted fonts: Fraunces, Hanken Grotesk, IBM Plex Mono (SIL OFL)"
+  "a/f/*.woff2": "self-hosted fonts: Fraunces, Hanken Grotesk, IBM Plex Mono (SIL OFL)",
+  "a/t1..t4.webp": "design studio option thumbnails: 160x134 crops of the stone/timber junction from c1..c4",
+  "prototip/": "separate, clearly labelled 3D study model (real geometry, three.js). Not photographic; does not use the images above"
  },
  "reference_video": {
   "file": "web1.mp4",
@@ -185,5 +191,13 @@
    1068
   ],
   "note": "phone screen recording of a reel; used only as design-language reference, not shipped"
+ },
+ "quality": {
+  "webp_vs_source_psnr_db": {
+   "scenes_2752": "37.9-40.0",
+   "scenes_1920": "36.9-39.6",
+   "presets_2400": "38.4-38.9"
+  },
+  "note": "measured against the ZIP sources; no sharpening, colour change or cropping is applied when deriving files"
  }
 }
