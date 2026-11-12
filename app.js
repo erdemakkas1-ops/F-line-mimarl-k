@@ -162,16 +162,17 @@ const curPhoto = () => capOf(segAt(cur), cur);
 /* ---------- film frames: fetched as compressed blobs around the playhead, decoded only next to it ---------- */
 // Coarse-to-fine fetch order (both ends, then every 16th, 8th ... frame) so a fast scroll always finds a near frame.
 // Decoded bitmaps are capped per film and released when the film leaves the screen; blobs are dropped far away.
-const FW = coarse ? 854 : 1284, BCAP = coarse ? 6 : 10, LOOK = 1.6, FAR = 4.5;
+// 854 px frames on touch devices, on small windows and on slow links; 1284 px (the clips' native size) otherwise
+const net = navigator.connection || {}, slowNet = /(^|-)2g$/.test(net.effectiveType || ''), FW = coarse || net.effectiveType === '3g' || Math.max(pic.clientWidth, pic.clientHeight * AI) * dpr < 1100 ? 854 : 1284, BCAP = coarse ? 6 : 10, LOOK = 1.6, FAR = 4.5;
 const FL = FILMS.map(f => { const o = [0, f.n - 1], h = new Set(o); [16, 8, 4, 2, 1].forEach(st => { for (let i = 0; i < f.n; i += st) if (!h.has(i)) { h.add(i); o.push(i); } });
   return { blob: [], req: [], bmp: new Map(), dec: new Set(), ord: o, oi: 0, tex: null, shown: -1, want: 0, on: -1, gen: 0, fail: 0 }; });
-let inflight = 0, decoding = 0, drawN = 0, dir = 1;
+let inflight = 0, decoding = 0, drawN = 0, dir = 1, gap = 0;
 const stat = { ff: 0, lag: 0, lagMax: 0, hold: 0, blank: 0 };    // film frames drawn, frames away from the wanted one, photo holds, draws with nothing
 const fdist = (fi) => { const g = SEG[FILMS[fi].seg], s = g.s - g.pL, e = g.e + g.pR; return (cur < s ? s - cur : cur > e ? cur - e : 0) * WT; };   // in chapter units, 0 while the film can be on screen
 const fidx = (fi) => Math.round(kAt(FILMS[fi].seg, cur) * (FILMS[fi].n - 1));
 function fetchFrame(fi, i) {
   const F = FL[fi], g = F.gen; F.req[i] = 1; inflight++;
-  fetch(FILMS[fi].dir + FW + '/' + ('00' + i).slice(-3) + '.webp').then(r => { if (!r.ok) throw new Error(r.status); return r.blob(); })
+  fetch(FILMS[fi].dir + FW + '/' + ('00' + i).slice(-3) + '.webp', { priority: 'low' }).then(r => { if (!r.ok) throw new Error(r.status); return r.blob(); })
     .then(b => { if (F.gen === g) F.blob[i] = b; }, () => { if (F.gen === g) { F.req[i] = 0; F.fail++; } })
     .then(() => { inflight--; pump(); });
 }
@@ -187,10 +188,10 @@ function trim(F) {                                              // keep the bitm
 }
 function release(F, blobs) {
   F.bmp.forEach(m => { if (m.close) m.close(); }); F.bmp.clear(); F.shown = -1;        // the texture keeps its pixels
-  if (blobs) { F.gen++; F.blob = []; F.req = []; F.oi = 0; }
+  if (blobs) { F.gen++; F.blob = []; F.req = []; F.oi = 0; F.fail = 0; }
 }
 function nextFetch() {
-  if (!ok[curPhoto()]) return null;                              // the photograph on screen comes first
+  if (!ok[curPhoto()] || Math.abs(gap) * WT > 1.2) return null;   // the photograph on screen comes first; nothing while a jump (menu, chapter button) flies past
   let best = null, bd = LOOK;
   FL.forEach((F, fi) => { const d = fdist(fi); if (d < bd && F.fail < 12) {
     const n = FILMS[fi].n; let pick = -1;
@@ -322,15 +323,15 @@ function size() {
 const pos = () => { const r = track.getBoundingClientRect(); return [clamp(-r.top / Math.max(1, r.height - stage.offsetHeight), 0, 1), r.bottom]; };
 const hasGL = initGL();
 // films only where they can run well: WebGL, motion allowed, no data saver, not a very low-memory device. Otherwise the
-// approved eight-photograph sequence runs unchanged. ?nofilm forces that for comparison.
-FILM = hasGL && !reduce && !/[?&]nofilm\b/.test(location.search) && !(navigator.connection && navigator.connection.saveData) && (navigator.deviceMemory || 4) >= 2;
+// approved eight-photograph sequence runs unchanged (also on 2g links). ?nofilm forces that for comparison.
+FILM = hasGL && !reduce && !/[?&]nofilm\b/.test(location.search) && !net.saveData && !slowNet && (navigator.deviceMemory || 4) >= 2;
 buildTL(); root.classList.toggle('film', FILM);
 let cur = pos()[0], last = performance.now(), slow = 0;
 function tick(now) {
   requestAnimationFrame(tick);
   const dt = Math.min(.1, (now - last) / 1000); last = now;
   const [tgt, bottom] = pos(); root.classList.toggle('past', bottom < 80);
-  const d = tgt - cur;
+  const d = tgt - cur; gap = d;
   if (d) { dir = d > 0 ? 1 : -1; cur = Math.abs(d) < 2e-5 || reduce || still ? tgt : cur + d * (1 - Math.exp(-dt * (coarse ? 16 : 9))); dirty = true; }
   const px = ptr.tx - ptr.x, py = ptr.ty - ptr.y;
   if (Math.abs(px) + Math.abs(py) > 1e-3) { ptr.x += px * Math.min(1, dt * 4); ptr.y += py * Math.min(1, dt * 4); dirty = true; }
