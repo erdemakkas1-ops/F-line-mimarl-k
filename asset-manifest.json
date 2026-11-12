@@ -1,30 +1,189 @@
 {
- "hero_and_final": "a/p_dusk.jpg",
- "poster_before_webgl": "a/poster.jpg (same dusk frame, 1280 px)",
- "gallery": {
-  "Salon": "a/p_salon.jpg",
-  "Yatak odası": "a/p_yatak.jpg",
-  "Hol": "a/p_hol.jpg",
-  "Giriş": "a/p_entry.jpg"
+ "note": "Single source of truth for site imagery. Source files are 2752x1536 JPEG (not 4K). ZIP file numbers are rotated by one against the brief; mapping below is by verified content.",
+ "images": [
+  {
+   "brief_image": 1,
+   "zip_file": "2.jpg",
+   "role": "Exterior hero",
+   "source_px": [
+    2752,
+    1536
+   ],
+   "files": [
+    "a/s1.webp",
+    "a/s1-1920.webp",
+    "a/s1-1100.webp",
+    "a/d1.png (depth map, 1024x572, estimated with Depth Anything V2)"
+   ]
+  },
+  {
+   "brief_image": 2,
+   "zip_file": "3.jpg",
+   "role": "Building approach",
+   "source_px": [
+    2752,
+    1536
+   ],
+   "files": [
+    "a/s2.webp",
+    "a/s2-1920.webp",
+    "a/s2-1100.webp",
+    "a/d2.png (depth map, 1024x572, estimated with Depth Anything V2)"
+   ]
+  },
+  {
+   "brief_image": 3,
+   "zip_file": "4.jpg",
+   "role": "Main entrance",
+   "source_px": [
+    2752,
+    1536
+   ],
+   "files": [
+    "a/s3.webp",
+    "a/s3-1920.webp",
+    "a/s3-1100.webp",
+    "a/d3.png (depth map, 1024x572, estimated with Depth Anything V2)"
+   ]
+  },
+  {
+   "brief_image": 4,
+   "zip_file": "5.jpg",
+   "role": "Living room",
+   "source_px": [
+    2752,
+    1536
+   ],
+   "files": [
+    "a/s4.webp",
+    "a/s4-1920.webp",
+    "a/s4-1100.webp",
+    "a/d4.png (depth map, 1024x572, estimated with Depth Anything V2)"
+   ]
+  },
+  {
+   "brief_image": 5,
+   "zip_file": "6.jpg",
+   "role": "Staircase & upper gallery",
+   "source_px": [
+    2752,
+    1536
+   ],
+   "files": [
+    "a/s5.webp",
+    "a/s5-1920.webp",
+    "a/s5-1100.webp",
+    "a/d5.png (depth map, 1024x572, estimated with Depth Anything V2)"
+   ]
+  },
+  {
+   "brief_image": 6,
+   "zip_file": "7.jpg",
+   "role": "Master bedroom",
+   "source_px": [
+    2752,
+    1536
+   ],
+   "files": [
+    "a/s6.webp",
+    "a/s6-1920.webp",
+    "a/s6-1100.webp",
+    "a/d6.png (depth map, 1024x572, estimated with Depth Anything V2)"
+   ]
+  },
+  {
+   "brief_image": 7,
+   "zip_file": "8.jpg",
+   "role": "Architectural engineering (conceptual cutaway)",
+   "source_px": [
+    2752,
+    1536
+   ],
+   "files": [
+    "a/s7.webp",
+    "a/s7-1920.webp",
+    "a/s7-1100.webp",
+    "a/d7.png (depth map, 1024x572, estimated with Depth Anything V2)"
+   ]
+  },
+  {
+   "brief_image": 8,
+   "zip_file": "9.jpg",
+   "role": "Final exterior overview",
+   "source_px": [
+    2752,
+    1536
+   ],
+   "files": [
+    "a/s8.webp",
+    "a/s8-1920.webp",
+    "a/s8-1100.webp",
+    "a/d8.png (depth map, 1024x572, estimated with Depth Anything V2)"
+   ]
+  },
+  {
+   "brief_image": 9,
+   "zip_file": "10.jpg",
+   "role": "Configurator: Original",
+   "source_px": [
+    2752,
+    1536
+   ],
+   "files": [
+    "a/c1.webp",
+    "a/c1-1280.webp"
+   ]
+  },
+  {
+   "brief_image": 10,
+   "zip_file": "11.jpg",
+   "role": "Configurator: Modern Natural",
+   "source_px": [
+    2752,
+    1536
+   ],
+   "files": [
+    "a/c2.webp",
+    "a/c2-1280.webp"
+   ]
+  },
+  {
+   "brief_image": 11,
+   "zip_file": "12.jpg",
+   "role": "Configurator: Industrial Luxury",
+   "source_px": [
+    2752,
+    1536
+   ],
+   "files": [
+    "a/c3.webp",
+    "a/c3-1280.webp"
+   ]
+  },
+  {
+   "brief_image": 12,
+   "zip_file": "1.jpg",
+   "role": "Configurator: Contemporary Premium",
+   "source_px": [
+    2752,
+    1536
+   ],
+   "files": [
+    "a/c4.webp",
+    "a/c4-1280.webp"
+   ]
+  }
+ ],
+ "other": {
+  "a/og.jpg": "share preview (from brief image 1)",
+  "a/f/*.woff2": "self-hosted fonts: Fraunces, Hanken Grotesk, IBM Plex Mono (SIL OFL)"
  },
- "3d_sky": "a/sky.jpg",
- "3d_textures": [
-  "a/hardwood2_diffuse.jpg",
-  "a/hardwood2_bump.jpg",
-  "a/hardwood2_roughness.jpg",
-  "a/grass.jpg",
-  "a/waternormals.jpg"
- ],
- "3d_models": [
-  "a/chair.json",
-  "a/plant.json",
-  "a/vase.json"
- ],
- "removed": [
-  "a/p_living.jpg",
-  "a/p_detail.jpg",
-  "a/sofa.json",
-  "a/sofa_0.jpg",
-  "a/sofa_1.jpg"
- ]
+ "reference_video": {
+  "file": "web1.mp4",
+  "px": [
+   480,
+   1068
+  ],
+  "note": "phone screen recording of a reel; used only as design-language reference, not shipped"
+ }
 }

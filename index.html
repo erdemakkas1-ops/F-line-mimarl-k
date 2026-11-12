@@ -3,229 +3,364 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="F LINE Mimarlık &amp; Mühendislik: mimari proje, tasarım, 3D modelleme ve statik proje. Kaydırarak gezilen üç boyutlu konsept villa.">
+<title>F LINE Mimarlık &amp; Mühendislik</title>
+<meta name="description" content="F LINE Mimarlık &amp; Mühendislik: mimari proje, tasarım, 3D modelleme ve statik proje. Kaydırarak izlenen konsept villa ve tasarım stüdyosu.">
+<meta name="theme-color" content="#1c1510">
+<meta property="og:type" content="website">
 <meta property="og:title" content="F LINE Mimarlık &amp; Mühendislik">
 <meta property="og:description" content="Bir çizgiden, yaşamın kendisine.">
-<meta property="og:image" content="https://f-line-mimarl-k.vercel.app/a/poster.jpg">
 <meta property="og:url" content="https://f-line-mimarl-k.vercel.app/">
-<meta property="og:type" content="website">
-<style>html{color-scheme:light}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
-<meta name="claude:viewport-fit-sides" content="cover">
-<title>F LINE Mimarlık &amp; Mühendislik</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<meta property="og:image" content="https://f-line-mimarl-k.vercel.app/a/og.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231c1510'/%3E%3Cpath d='M10 24V8h12M10 16h9' stroke='%23f5efe4' stroke-width='2.4' fill='none'/%3E%3C/svg%3E">
+<link rel="preload" as="image" href="a/s1-1100.webp" type="image/webp" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="a/f/hanken-grotesk-latin-wght-normal.woff2" crossorigin>
 <style>
-/* layout: a sticky full-viewport 3D stage scrubbed by a tall scroll track, then an ivory editorial site below it */
-:root{--ivory:#efe9de;--paper:#e6dfd2;--ink:#171512;--soft:#5a554c;--line:#c9c1b2;--bronze:#86592a;--night:#14120f;--on:#f4eee3;--on-soft:#d6cebf;--bronze-l:#d9ad72;
---display:Fraunces,'Iowan Old Style',Georgia,serif;--body:'Hanken Grotesk','Helvetica Neue',Arial,sans-serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;color-scheme:light}
-body{background:var(--ivory);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
-.gut{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-.mono{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+/* fonts: self-hosted (SIL OFL). latin + latin-ext cover Turkish */
+@font-face{font-family:Fraunces;font-style:normal;font-weight:100 900;font-display:swap;src:url(a/f/fraunces-latin-opsz-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Fraunces;font-style:normal;font-weight:100 900;font-display:swap;src:url(a/f/fraunces-latin-ext-opsz-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0,U+2113}
+@font-face{font-family:Fraunces;font-style:italic;font-weight:100 900;font-display:swap;src:url(a/f/fraunces-latin-opsz-italic.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Fraunces;font-style:italic;font-weight:100 900;font-display:swap;src:url(a/f/fraunces-latin-ext-opsz-italic.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0,U+2113}
+@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:100 900;font-display:swap;src:url(a/f/hanken-grotesk-latin-wght-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:100 900;font-display:swap;src:url(a/f/hanken-grotesk-latin-ext-wght-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0,U+2113}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(a/f/ibm-plex-mono-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(a/f/ibm-plex-mono-latin-ext-500-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0,U+2113}
+
+/* tokens: warm ivory ground, espresso and charcoal, one restrained orange */
+:root{--ivory:#f4efe7;--paper:#ebe4d8;--line:#cfc5b5;--ink:#1b1612;--soft:#5b5248;
+--espresso:#1c1510;--on:#f5efe4;--on-soft:#cdc3b4;--on-line:rgba(245,239,228,.26);
+--orange:#d9783b;--orange-ink:#a04a18;--orange-on:#eb9a62;
+--display:Fraunces,'Iowan Old Style',Georgia,serif;--body:'Hanken Grotesk','Helvetica Neue',Arial,sans-serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+--gut:max(20px,env(safe-area-inset-left,0px));--pich:62vh;color-scheme:light}
+@supports(height:1svh){:root{--pich:62svh}}
+@media(min-width:900px){:root{--gut:max(44px,env(safe-area-inset-left,0px))}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--ivory);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3,p,figure{margin:0}
 a{color:inherit}
-#track{height:950vh;height:950svh;background:var(--night)}
-#stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;color:var(--on);background:var(--night) url(a/poster.jpg) center/cover no-repeat}
-#gl{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.2s ease;touch-action:pan-y}
-#gl.on{opacity:1}
-#plates{position:absolute;inset:0;overflow:hidden;pointer-events:none;transition:opacity .5s ease}.plate{position:absolute;inset:0;overflow:hidden;visibility:hidden}.plate img{position:absolute;left:0;top:0;width:2400px;height:1340px;max-width:none;transform-origin:0 0;will-change:transform}html.free #plates{opacity:0}#dip{position:absolute;inset:0;background:var(--night);opacity:0;pointer-events:none}
-.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(10,9,8,.42),transparent 20%,transparent 50%,rgba(10,9,8,.7)),linear-gradient(90deg,rgba(10,9,8,.5),transparent 58%)}
-.nav{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;justify-content:space-between;align-items:center;gap:24px;padding-top:calc(18px + env(safe-area-inset-top,0px));padding-bottom:18px}
+button,input,select,textarea{font:inherit;color:inherit}
+[hidden]{display:none!important}
+.mono{font:500 11px/1.45 var(--mono);letter-spacing:.16em;text-transform:uppercase}
+.gut{padding-left:var(--gut);padding-right:var(--gut)}
+.wrap{max-width:1320px;margin-inline:auto}
+.skip{position:absolute;left:-999px;top:8px;z-index:99;background:var(--ivory);color:var(--ink);padding:10px 14px}
+.skip:focus{left:8px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;font:600 15px var(--body);text-decoration:none;border:1px solid currentColor;background:none;cursor:pointer;white-space:nowrap}
+.btn.acc{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.btn.ink{background:var(--ink);border-color:var(--ink);color:var(--ivory)}
+.btn.on{background:var(--on);border-color:var(--on);color:var(--ink)}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+/* navigation: fixed, light text over the stage, ivory bar over the editorial pages */
+.nav{position:fixed;top:0;left:0;right:0;z-index:30;height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px;color:var(--on);transition:background-color .3s,color .3s,box-shadow .3s}
+.nav::before{content:"";position:absolute;inset:0 0 -30px;z-index:-1;pointer-events:none;background:linear-gradient(rgba(16,11,8,.6),transparent);transition:opacity .3s}
+html.past .nav{background:rgba(244,239,231,.95);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+html.past .nav::before{opacity:0}
 .brand{display:flex;flex-direction:column;line-height:1;text-decoration:none}
-.brand b{font-family:var(--body);font-weight:600;font-size:21px;letter-spacing:.34em}
-.brand span{margin-top:6px;font-size:9.5px;color:var(--on-soft)}
-.nav ul{display:flex;gap:30px;margin:0;padding:0;list-style:none;font-size:14.5px;font-weight:500}
-.nav ul a{text-decoration:none;padding:12px 0;display:inline-block;border-bottom:1px solid transparent}
-.nav ul a:hover{border-color:var(--on)}
-#menu-btn{display:none;width:46px;height:46px;border:1px solid rgba(244,238,227,.45);background:none;color:var(--on);cursor:pointer}
-.dock{position:absolute;z-index:4;left:0;bottom:0;width:min(100%,620px);box-sizing:border-box;padding-bottom:calc(34px + env(safe-area-inset-bottom,0px));display:grid}
-.dock>*{grid-area:1/1;align-self:end;transition:opacity .6s ease,transform .6s ease}
-.off{opacity:0!important;transform:translateY(12px);pointer-events:none}
-#hero h1{text-shadow:0 2px 34px rgba(0,0,0,.45);margin:0;font-family:var(--body);font-weight:600;font-size:clamp(44px,8.4vw,112px);letter-spacing:.2em;line-height:1}
-#hero .sub{display:block;margin-top:14px;color:var(--on-soft)}
-#hero p,#fin h2,#cap h2{font-family:var(--display);font-weight:300;text-wrap:balance}
-#hero p{margin:22px 0 26px;font-size:clamp(24px,3.1vw,38px);line-height:1.15;font-style:italic}
-.row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
-.btn{display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 24px;box-sizing:border-box;font:600 15px var(--body);text-decoration:none;cursor:pointer;border:1px solid var(--on);background:var(--on);color:var(--ink)}
-.btn.line{background:transparent;color:var(--on)}
-.btn.dark{background:var(--ink);color:var(--ivory);border-color:var(--ink)}
-.scroll{margin-top:26px;display:flex;align-items:center;gap:12px;color:var(--on-soft)}
-.scroll i{display:block;width:1px;height:34px;background:var(--on-soft);transform-origin:top;animation:drip 2.2s ease-in-out infinite}
-@keyframes drip{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
-#cap .mono,#fin .mono{color:var(--bronze-l)}
-#cap h2{margin:10px 0 10px;font-size:clamp(32px,4.4vw,56px);line-height:1.02}
-#cap p{margin:0;max-width:46ch;color:var(--on-soft)}
-#fin h2{margin:12px 0 24px;font-size:clamp(36px,5.4vw,72px);line-height:1}
-#sel{position:absolute;z-index:5;right:0;bottom:calc(92px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px;align-items:flex-end;transition:opacity .6s ease,transform .6s ease}
-#sel div{display:flex;gap:6px;align-items:center}
-#sel span{margin-right:8px;color:var(--on-soft)}
-#sel button,.tool,.opt{min-height:44px;padding:0 15px;border:1px solid rgba(244,238,227,.5);background:rgba(20,18,15,.5);color:var(--on);font:500 13.5px var(--body);cursor:pointer}
-#sel button[aria-pressed="true"],.opt[aria-pressed="true"]{background:var(--on);color:var(--ink);border-color:var(--on)}
-.tools{position:absolute;z-index:5;right:0;bottom:calc(30px + env(safe-area-inset-bottom,0px));display:flex;gap:12px;align-items:center}
-.tools .mono{color:var(--on-soft);font-size:9.5px;max-width:30ch;text-align:right}
-#chap{position:absolute;z-index:4;right:max(20px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:flex-end;padding-right:16px}
-#chap::before,#bar{content:"";position:absolute;right:0;top:0;width:1px;height:100%;background:rgba(244,238,227,.3)}
-#bar{background:var(--on);transform-origin:top;transform:scaleY(0)}
-#chap button{min-height:38px;border:0;background:none;color:var(--on-soft);cursor:pointer;opacity:.75}
-#chap button[aria-current="true"]{color:var(--on);opacity:1}
-#notes{position:absolute;inset:0;pointer-events:none;z-index:3}
-.note{position:absolute;left:0;top:0;white-space:nowrap;padding:0 0 0 18px;margin-top:-8px;opacity:0;transition:opacity .5s ease;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-shadow:0 1px 8px rgba(0,0,0,.7)}
-.note::before{content:"";position:absolute;left:-4px;top:4px;width:7px;height:7px;border:1px solid var(--on);border-radius:50%;background:rgba(244,238,227,.25)}
+.brand b{font:600 20px/1 var(--body);letter-spacing:.34em}
+.brand span{margin-top:6px;font-size:9px;opacity:.82}
+.nav ul{display:flex;align-items:center;gap:28px;margin:0;padding:0;list-style:none;font-size:14.5px;font-weight:500}
+.nav ul a{display:inline-block;padding:12px 0;text-decoration:none;border-bottom:1px solid transparent}
+.nav ul a:hover{border-color:currentColor}
+.nav .btn{min-height:40px;padding:0 18px;font-size:14px}
+#menu-btn{display:none}
+
+/* stage: one sticky picture driven by the scroll track */
+#track{position:relative;background:var(--espresso)}
+html.js #track{height:860vh}
+#stage{position:relative;height:100vh;overflow:hidden;color:var(--on);background:var(--espresso)}
+html.js #stage{position:sticky;top:0}
+@supports(height:1svh){html.js #track{height:860svh}#stage{height:100svh}}
+#pic{position:absolute;inset:0;background:var(--espresso) url(a/s1-1100.webp) 50% 50%/cover no-repeat}
+#gl{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .35s ease}
+#gl.on{opacity:1}
+#shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(16,11,8,.42),transparent 20%,transparent 44%,rgba(16,11,8,.8)),linear-gradient(90deg,rgba(16,11,8,.5),transparent 56%)}
+#notes{position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none}
+.note{position:absolute;left:0;top:0;opacity:0;transition:opacity .4s ease;white-space:nowrap;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.9),0 0 2px rgba(0,0,0,.7)}
 .note.on{opacity:1}
-#nogl{position:absolute;inset:0;z-index:8;display:grid;place-items:center;text-align:center;background:rgba(20,18,15,.82)}
-html.free,html.free body{overflow:hidden}
-html.free .dock,html.free #chap,html.free #sel{opacity:0;pointer-events:none}
-html.free #gl{cursor:grab}
-/* ---- editorial site ---- */
-.sec{padding-block:clamp(72px,10vw,150px)}
-.wrap{max-width:1240px;margin-inline:auto}
-.eyebrow{color:var(--bronze);margin:0 0 22px}
-.sec h2{margin:0;font-family:var(--display);font-weight:300;font-size:clamp(38px,5.6vw,84px);line-height:1;letter-spacing:-.01em;text-wrap:balance}
-.lede{max-width:56ch;color:var(--soft);font-size:19px;margin:26px 0 0}
-.svc{margin-top:clamp(40px,6vw,80px);border-top:1px solid var(--ink)}
-.svc article{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.3fr) auto;gap:16px 48px;align-items:baseline;padding:34px 0;border-bottom:1px solid var(--line)}
-.svc h3{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(28px,3vw,42px);line-height:1.05}
-.svc p{margin:0;color:var(--soft)}
-.svc p b{display:block;margin-top:10px;color:var(--ink);font-weight:500}
-.svc a{font-weight:600;white-space:nowrap;display:inline-flex;align-items:center;min-height:44px}
+.note i{position:absolute;left:-5px;top:-5px;width:10px;height:10px;border:1.5px solid #fff;border-radius:50%;background:var(--orange)}
+.note::before{content:"";position:absolute;top:0;left:8px;width:22px;height:1px;background:#fff}
+.note span{position:absolute;top:-5px;left:36px}
+.note.l::before{left:auto;right:8px}
+.note.l span{left:auto;right:36px}
+#concept{position:absolute;z-index:3;right:var(--gut);bottom:calc(30px + env(safe-area-inset-bottom,0px));max-width:34ch;text-align:right;font-size:9.5px;color:var(--on-soft)}
+#panel{position:absolute;z-index:3;left:0;bottom:0;width:min(100%,680px);display:grid;padding-bottom:calc(44px + env(safe-area-inset-bottom,0px))}
+.cap{grid-area:1/1;align-self:end;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .18s ease,transform .18s ease,visibility 0s .18s}
+.cap.on{opacity:1;visibility:visible;transform:none;transition:opacity .4s ease .2s,transform .4s ease .2s,visibility 0s .2s}
+.kick{color:var(--orange-on)}
+.cap h2{font:300 clamp(34px,4.6vw,64px)/1.02 var(--display);letter-spacing:-.01em;margin:12px 0;text-wrap:balance}
+.cap p{max-width:46ch;color:var(--on-soft)}
+.cap .row{margin-top:22px}
+#hero h1{font:600 clamp(40px,5.4vw,82px)/1 var(--body);letter-spacing:.22em;text-shadow:0 2px 30px rgba(0,0,0,.45)}
+#hero .sub{display:block;margin-top:14px;color:var(--on-soft)}
+#hero .tag{margin:22px 0 0;font:italic 300 clamp(23px,3vw,38px)/1.15 var(--display);color:var(--on)}
+.hint{display:flex;align-items:center;gap:12px;margin-top:26px;color:var(--on-soft)}
+.hint i{display:block;width:1px;height:30px;background:var(--on-soft)}
+#chap{position:absolute;z-index:3;right:var(--gut);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:flex-end;padding-right:16px}
+#chap::before,#bar{content:"";position:absolute;right:0;top:0;width:1px;height:100%;background:var(--on-line)}
+#bar{background:var(--on);transform-origin:top;transform:scaleY(0)}
+#chap button{min-height:34px;padding:0;border:0;background:none;cursor:pointer;color:var(--on-soft);opacity:.72}
+#chap button[aria-current="true"]{color:var(--on);opacity:1}
+
+/* portrait screens: the picture keeps its own area and the caption sits below it, so text never covers the architecture */
+@media (max-aspect-ratio:1/1){
+ #stage{display:grid;grid-template-rows:var(--pich) minmax(0,1fr)}
+ #pic{position:relative;inset:auto;background-position:24% 50%}
+ #shade{background:linear-gradient(rgba(16,11,8,.55),transparent 26%,transparent 80%,rgba(16,11,8,.6))}
+ #panel{position:relative;width:auto;padding-top:26px;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));align-content:start}
+ .cap{align-self:start}
+ .cap h2{font-size:clamp(26px,7.4vw,40px);margin:8px 0}
+ .cap p{font-size:15px;line-height:1.5}
+ .cap .row{margin-top:14px}
+ #hero h1{font-size:clamp(38px,11.5vw,64px)}
+ #hero .sub{margin-top:8px}
+ #hero .tag{margin-top:12px;font-size:clamp(20px,5.8vw,30px)}
+ .hint{display:none}
+ #concept{right:auto;left:var(--gut);bottom:14px;text-align:left;font-size:8.5px;max-width:none}
+ #chap{top:var(--pich);left:0;right:0;transform:translateY(-50%);flex-direction:row;align-items:center;gap:4px;padding:0 var(--gut)}
+ #chap::before,#bar{display:none}
+ #chap button{flex:1;position:relative;min-height:44px;font-size:0;opacity:1}
+ #chap button::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:var(--on-line)}
+ #chap button.done::after{background:var(--on-soft)}
+ #chap button[aria-current="true"]::after{background:var(--orange-on)}
+ .note{font-size:9px;letter-spacing:.06em}
+ .note::before{width:12px}.note span{left:24px}.note.l span{right:24px}
+}
+
+/* editorial pages */
+.sec{padding-block:clamp(72px,10vw,148px);scroll-margin-top:72px}
+.eyebrow{color:var(--orange-ink);margin-bottom:22px}
+.sec h2{font:300 clamp(38px,5.4vw,80px)/1 var(--display);letter-spacing:-.012em;text-wrap:balance}
+.sec h2 em{font-style:italic;color:var(--orange-ink)}
+.lede{max-width:56ch;margin-top:26px;font-size:19px;color:var(--soft)}
+.cred{display:block;margin-top:10px;color:var(--soft)}
+.svc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:clamp(28px,5vw,84px);margin-top:clamp(40px,6vw,80px);align-items:start}
+.svc-list{border-top:1px solid var(--ink)}
+.svc-item{display:grid;grid-template-columns:48px minmax(0,1fr);gap:8px 8px;padding:28px 0;border-bottom:1px solid var(--line);transition:opacity .3s}
+.svc-item .n{padding-top:10px;color:var(--orange-ink)}
+.svc-item h3{font:400 clamp(27px,2.9vw,42px)/1.05 var(--display)}
+.svc-item p{grid-column:2;color:var(--soft)}
+.svc-item p b{display:block;margin-top:8px;font-weight:500;color:var(--ink)}
+.svc-item a{grid-column:2;justify-self:start;display:inline-flex;align-items:center;min-height:44px;font-weight:600}
+.svc-img{display:none}
+.svc-view{position:sticky;top:104px;aspect-ratio:5/6;max-width:100%;overflow:hidden;background:var(--paper)}
+.svc-view img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 100% 0 0)}
+.svc-view img.was{clip-path:inset(0);z-index:1}
+.svc-view img.on{clip-path:inset(0);z-index:2;transition:clip-path .8s cubic-bezier(.7,0,.2,1)}
+.svc-view figcaption{position:absolute;z-index:3;left:16px;bottom:14px;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.8)}
+@media (min-width:901px){.svc-item h3{color:#786e63;transition:color .3s}.svc-item.on h3{color:var(--ink)}}
+
+#tasarla{background:var(--espresso);color:var(--on)}
+#tasarla .eyebrow,#tasarla h2 em{color:var(--orange-on)}
+#tasarla .lede{color:var(--on-soft)}
+.cfg{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:clamp(24px,4vw,60px);margin-top:clamp(36px,5vw,64px);align-items:start}
+.cfg-stage{min-width:0}
+.cfg-view{position:relative;aspect-ratio:2400/1340;max-width:100%;overflow:hidden;background:#120d0a;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.cfg-view img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+#cfg-top{clip-path:inset(0 100% 0 0)}
+.cfg-edge{position:absolute;z-index:2;top:0;bottom:0;left:0;width:2px;margin-left:-1px;background:var(--orange);opacity:0;pointer-events:none}
+.cfg-knob{position:absolute;z-index:3;top:50%;left:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border:0;border-radius:50%;background:var(--orange);color:var(--ink);cursor:ew-resize;display:grid;place-items:center}
+.cfg-tag{position:absolute;z-index:2;bottom:12px;padding:5px 9px;background:rgba(18,13,10,.72);color:var(--on)}
+.cfg-tag.a{left:12px}.cfg-tag.b{right:12px}
+.cfg-bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 16px;margin-top:12px;color:var(--on-soft)}
+.cfg-bar .btn{min-height:44px;padding:0 16px;font-size:13.5px}
+.cfg-bar .btn[aria-pressed="true"]{background:var(--on);border-color:var(--on);color:var(--ink)}
+.cfg-bar .btn:disabled{opacity:.45;cursor:default}
+.cfg-panel{min-width:0;display:flex;flex-direction:column;align-items:stretch}
+.cfg-opts{display:flex;flex-direction:column;border-top:1px solid var(--on-line)}
+.cfg-opt{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:4px 10px;align-items:center;padding:17px 0;border:0;border-bottom:1px solid var(--on-line);background:none;text-align:left;cursor:pointer;color:var(--on-soft)}
+.cfg-opt .n{font:500 11px var(--mono);letter-spacing:.14em}
+.cfg-opt .nm{font:400 clamp(21px,2vw,26px)/1.1 var(--display)}
+.cfg-opt .mt{grid-column:2/4;font-size:14px}
+.cfg-opt .sw{display:flex;gap:4px}
+.cfg-opt .sw i{display:block;width:22px;height:22px;border:1px solid rgba(245,239,228,.3)}
+.cfg-opt[aria-checked="true"]{color:var(--on)}
+.cfg-opt[aria-checked="true"] .n{color:var(--orange-on)}
+.cfg-opt[aria-checked="true"] .nm{text-decoration:underline;text-decoration-color:var(--orange);text-decoration-thickness:2px;text-underline-offset:7px}
+.cfg-sum{margin:24px 0 22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 18px;font-size:15px}
+.cfg-sum dt{color:var(--on-soft)}
+.cfg-sum dd{margin:0}
+
 #projeler{background:var(--paper)}
 .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(32px,6vw,96px);align-items:start}
 .two>*{min-width:0}
-.fact{margin:0;padding:0;list-style:none;border-top:1px solid var(--ink)}
-.fact li{padding:18px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:24px}
-.fact li span:last-child{color:var(--soft);text-align:right}
+.gal{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(10px,1.6vw,22px);margin-top:clamp(40px,6vw,80px);align-items:end}
+.gal figure{min-width:0}
+.gal figure:first-child{grid-row:span 2}
+.gal img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.gal figure:first-child img{aspect-ratio:4/3.62}
+.gal figcaption{margin-top:10px;color:var(--soft)}
+.about-img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:34% 50%}
+.fact{margin:32px 0 0;padding:0;list-style:none;border-top:1px solid var(--ink)}
+.fact li{display:flex;justify-content:space-between;gap:24px;padding:18px 0;border-bottom:1px solid var(--line)}
+.fact li span:last-child{text-align:right;color:var(--soft)}
+#iletisim{background:var(--paper)}
 form{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:22px}
-form label{display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:600;min-width:0}
+form label{display:flex;flex-direction:column;gap:8px;min-width:0;font-size:13px;font-weight:600}
 form .wide{grid-column:1/-1}
-input,select,textarea{font:inherit;font-size:16px;padding:14px 0;border:0;border-bottom:1px solid var(--ink);background:transparent;color:var(--ink);border-radius:0;min-width:0}
+input,select,textarea{min-width:0;padding:14px 0;border:0;border-bottom:1px solid var(--ink);border-radius:0;background:transparent;font-size:16px}
 textarea{resize:vertical}
-#form-msg{grid-column:1/-1;margin:0;padding:16px 18px;border:1px solid var(--bronze);color:var(--ink)}
-#tasarla{background:var(--night);color:var(--on)}#tasarla .eyebrow{color:var(--bronze-l)}#tasarla .lede{color:var(--on-soft)}
-.cfg{margin-top:clamp(36px,5vw,64px);display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
-.cfg-stage{position:sticky;top:20px;min-width:0}
-#cfg-view{position:relative;aspect-ratio:16/10;max-width:100%;background:#1b1916 url(a/poster.jpg) center/cover;overflow:hidden}
-.cfg-bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;color:var(--on-soft)}
-.cfg-bar div,.cfg-g div{display:flex;flex-wrap:wrap;gap:6px}
-.cfg-panel{display:flex;flex-direction:column;gap:0;min-width:0;align-items:flex-start}
-.cfg-g{width:100%;border-top:1px solid rgba(244,238,227,.22)}.cfg-g summary{display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:52px;cursor:pointer;list-style:none;color:var(--on-soft)}.cfg-g summary::-webkit-details-marker{display:none}.cfg-g summary i{font:500 13px var(--body);font-style:normal;color:var(--on);text-align:right}.cfg-g[open] summary i{opacity:0}.cfg-g>div{padding:0 0 18px}#cfg-go{margin-top:22px}#cfg-view{cursor:grab;touch-action:pan-y}
-.strip{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.6vw,22px);margin-top:clamp(36px,5vw,64px)}.strip figure{margin:0;min-width:0}.strip img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}.strip figcaption{margin-top:10px;color:var(--soft)}
-#cfg-sum{margin:0;padding-top:22px;border-top:1px solid rgba(244,238,227,.3);width:100%;font-family:var(--display);font-weight:300;font-size:22px;line-height:1.35}
-@media (max-width:820px){.cfg{grid-template-columns:minmax(0,1fr)}.cfg-stage{top:0;z-index:2;background:var(--night);padding-block:8px 10px}.cfg-bar .mono{display:none}#cfg-view{aspect-ratio:4/3;max-width:none;margin-inline:calc(-1*max(20px,env(safe-area-inset-left,0px)))}#cfg-sum{font-size:17px}}
-footer{background:var(--night);color:var(--on-soft);padding-block:44px calc(44px + env(safe-area-inset-bottom,0px));font-size:14px}
+#form-msg{grid-column:1/-1;padding:18px 20px;border:1px solid var(--orange-ink)}
+#form-msg p{margin-bottom:14px}
+footer{background:var(--espresso);color:var(--on-soft);padding-block:44px calc(44px + env(safe-area-inset-bottom,0px));font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px}
-a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--bronze-l);outline-offset:3px}
-@media (max-width:820px){
- .nav ul{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;padding:8px max(20px,env(safe-area-inset-left,0px)) 20px;background:rgba(20,18,15,.94)}
- html.menu .nav ul{display:flex}.nav ul a{font-size:20px;padding:12px 0;display:block}
- #menu-btn{display:grid;place-items:center}
- #chap{padding-right:10px}#chap button{font-size:0;min-height:26px;width:20px}
- .tools .mono{display:none}.tools{bottom:auto;top:calc(18px + env(safe-area-inset-top,0px));right:58px}.tool{min-height:46px;padding:0 12px;font-size:12.5px}
- #sel{left:0;right:0;bottom:auto;top:calc(76px + env(safe-area-inset-top,0px));flex-direction:row;align-items:center;gap:18px;overflow-x:auto;padding-bottom:6px}#sel div{flex:0 0 auto}#sel button{padding:0 12px;font-size:13px}#sel span{margin-right:4px}
- .note{font-size:9px;letter-spacing:.08em;padding-left:13px}#cap h2{font-size:29px}#cap p{font-size:14.5px;line-height:1.5}#hero p{margin:14px 0 18px}
- .strip{grid-template-columns:1fr}
- .dock{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
- .svc article{grid-template-columns:minmax(0,1fr)}
-}
-@media (prefers-reduced-motion:reduce){.scroll i{animation:none}.dock>*,#gl,#sel{transition:none}}
-</style>
 
+@media (max-width:900px){
+ .nav ul{position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:0;padding:6px var(--gut) 22px;background:var(--espresso);color:var(--on)}
+ html.menu .nav{background:var(--espresso);color:var(--on)}
+ html.menu .nav ul{display:flex}
+ .nav ul a{display:block;padding:13px 0;font-size:20px;border-bottom:1px solid var(--on-line)}
+ .nav ul .btn{display:none}
+ #menu-btn{display:grid;place-items:center;width:46px;height:46px;padding:0;border:1px solid currentColor;background:none;color:inherit;cursor:pointer}
+ .svc{grid-template-columns:minmax(0,1fr)}
+ .svc-view{display:none}
+ .svc-img{display:block;grid-column:1/-1;width:100%;aspect-ratio:16/10;object-fit:cover;margin-bottom:12px}
+ .cfg{grid-template-columns:minmax(0,1fr)}
+ .cfg-stage{position:sticky;top:72px;z-index:4;margin-inline:calc(-1*var(--gut));padding-bottom:10px;background:var(--espresso)}
+ .cfg-bar{padding-inline:var(--gut)}
+ .cfg-bar .mono{display:none}
+ .gal{grid-template-columns:minmax(0,1fr)}
+ .gal figure:first-child img{aspect-ratio:16/10}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cap,.cap.on,#gl,.svc-view img.on{transition:none}}
+</style>
 </head>
 <body>
-<div id="track">
+<a class="skip" href="#hizmetler">İçeriğe geç</a>
+
+<header class="nav gut">
+ <a class="brand" href="#top" aria-label="F LINE Mimarlık ve Mühendislik, ana sayfa"><b>F LINE</b><span class="mono">Mimarlık &amp; Mühendislik</span></a>
+ <nav aria-label="Ana menü"><ul id="menu">
+  <li><a href="#top">Ana Sayfa</a></li><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="#hizmetler">Hizmetler</a></li><li><a href="#projeler">Projeler</a></li><li><a href="#tasarla">Tasarla</a></li><li><a href="#iletisim">İletişim</a></li>
+  <li><a class="btn acc" href="#iletisim">Teklif Al</a></li>
+ </ul></nav>
+ <button id="menu-btn" type="button" aria-label="Menü" aria-expanded="false" aria-controls="menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h18M3 16h18"/></svg></button>
+</header>
+
+<div id="track"><span id="top"></span>
  <div id="stage">
-  <canvas id="gl" role="img" aria-label="Brüt beton, traverten, ahşap ve camdan kavramsal tek katlı bir evin gerçek zamanlı üç boyutlu gezintisi: dış cepheden girişe, salona, strüktür açılımına, mutfağa, yatak odasına ve terasa"></canvas>
-  <div id="plates" aria-hidden="true"><div class="plate"><img src="a/p_dusk.jpg" alt=""></div></div><div id="dip"></div>
-  <div class="shade"></div>
-  <div id="notes"></div>
-  <header class="nav gut">
-   <a class="brand" href="#track"><b>F LINE</b><span class="mono">Mimarlık &amp; Mühendislik</span></a>
-   <nav aria-label="Ana menü"><ul>
-    <li><a href="#track">Ana Sayfa</a></li><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="#hizmetler">Hizmetler</a></li><li><a href="#projeler">Projeler</a></li><li><a href="#tasarla">Tasarla</a></li><li><a href="#iletisim">İletişim</a></li>
-   </ul></nav>
-   <button id="menu-btn" type="button" aria-label="Menü" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h18M3 16h18"></path></svg></button>
-  </header>
-  <div class="dock gut">
-   <div id="hero">
+  <div id="pic">
+   <canvas id="gl" role="img" aria-label="Doğal taş, ahşap ve camdan iki katlı konsept villa: dış cephe, giriş, salon, üst kat galerisi, yatak odası, taşıyıcı sistemi gösteren kesit ve genel görünüm"></canvas>
+   <div id="shade"></div>
+   <div id="notes" aria-hidden="true"></div>
+   <p id="concept" class="mono">Konsept görseller · gerçekleşmiş bir F LINE projesi değildir</p>
+  </div>
+  <div id="panel" class="gut">
+   <div class="cap on" id="hero">
     <h1>F LINE</h1><span class="sub mono">Mimarlık &amp; Mühendislik</span>
-    <p>Bir çizgiden, yaşamın kendisine.</p>
-    <div class="row"><button class="btn" id="explore" type="button">Mekânı Keşfet</button><a class="btn line" href="#projeler">Projeler</a></div>
-    <div class="scroll mono"><i></i>Kaydırarak yürüyün</div>
+    <p class="tag">Bir çizgiden, yaşamın kendisine.</p>
+    <div class="row"><button class="btn acc" id="explore" type="button">Mekânı Keşfet</button><a class="btn" href="#projeler">Projeler</a></div>
+    <div class="hint mono"><i></i>Kaydırarak ilerleyin</div>
    </div>
-   <div id="cap" class="off"><span class="mono" id="cap-k"></span><h2 id="cap-h"></h2><p id="cap-b"></p></div>
-   <div id="fin" class="off"><span class="mono">F LINE · Mimarlık &amp; Mühendislik</span><h2>Her detay, bir bütünün parçası.</h2>
-    <div class="row"><a class="btn" href="#iletisim">Projenizi Birlikte Tasarlayalım</a><a class="btn line" href="#projeler">Projelerimizi İnceleyin</a></div></div>
+   <div class="cap"><span class="kick mono">02 · Yaklaşım</span><h2>Girişe doğru.</h2><p>Giriş cephesinde doğal taş kaplı kütle öne çıkar; ahşap çıta yüzeyler ve cam korkuluklar cepheyi dengeler.</p></div>
+   <div class="cap"><span class="kick mono">03 · Giriş</span><h2>Eşikte.</h2><p>Taş kaplı giriş nişi ve koyu bronz kapı. İç mekânın sıcak ışığı dışarıdan okunur.</p></div>
+   <div class="cap"><span class="kick mono">04 · Salon</span><h2>Bahçeye açılan salon.</h2><p>Teras boyunca açılan cam cephe, ahşap çıta duvar ve üst kata çıkan açık basamaklı merdiven.</p></div>
+   <div class="cap"><span class="kick mono">05 · Merdiven ve galeri</span><h2>Üst kata çıkış.</h2><p>Cam korkuluklu galeri salona bakar; koridor yatak odasına bağlanır.</p></div>
+   <div class="cap"><span class="kick mono">06 · Ebeveyn yatak odası</span><h2>Sakin bir üst kat.</h2><p>Ahşap çıtalı yatak başı duvarı, doğal kumaşlar ve balkona açılan tam boy cam.</p></div>
+   <div class="cap"><span class="kick mono">07 · Mühendislik</span><h2>Kaplamanın ardındaki yapı.</h2><p>Kolon, kiriş ve döşeme mimariyle aynı masada kurgulanır. Kavramsal bir kesittir; onaylı statik proje değildir.</p></div>
+   <div class="cap"><span class="kick mono">08 · Bütün</span><h2>Her detay, bir bütünün parçası.</h2><div class="row"><a class="btn acc" href="#iletisim">Projenizi Birlikte Tasarlayalım</a><a class="btn" href="#projeler">Projelerimizi İnceleyin</a></div></div>
   </div>
-  <div id="sel" class="gut off" hidden aria-label="Malzeme seçimi">
-   <div><span class="mono">Zemin</span><button type="button" data-g="floor" data-v="oak" aria-pressed="true">Meşe</button><button type="button" data-g="floor" data-v="dark" aria-pressed="false">Füme meşe</button><button type="button" data-g="floor" data-v="conc" aria-pressed="false">Cilalı beton</button></div>
-   <div><span class="mono">Tezgâh</span><button type="button" data-g="top" data-v="trav" aria-pressed="true">Traverten</button><button type="button" data-g="top" data-v="dark" aria-pressed="false">Koyu taş</button></div>
-  </div>
-  <div id="chap" aria-label="Bölümler"><span id="bar"></span></div>
-  <div class="tools gut"><span class="mono">Kavramsal görseller ve 3D sahne · gerçekleşmiş bir F LINE projesi değildir</span><button class="tool" id="free" type="button">Serbest Keşif</button><button class="tool" id="back" type="button" hidden>Tura Dön</button></div>
-  <div id="nogl" hidden><div class="gut"><p style="font-family:var(--display);font-size:30px;margin:0">3D gezinti bu cihazda açılamadı</p><p class="mono" style="margin-top:14px">Aşağı kaydırarak hizmetleri ve iletişim bilgilerini görebilirsiniz.</p></div></div>
+  <nav id="chap" aria-label="Bölümler"><span id="bar"></span></nav>
  </div>
 </div>
 
 <main>
 <section class="sec gut" id="hizmetler"><div class="wrap">
  <p class="eyebrow mono">Hizmetler</p>
- <h2>Çizimden hesaba, tek masada.</h2>
- <p class="lede">Mimari tasarım ile mühendisliği tek ekipte yürütüyoruz. Fikir, çizim, model ve taşıyıcı sistem aynı masada gelişir; proje ilk eskizden uygulamaya tutarlı ilerler.</p>
- <div class="strip"><figure><img src="a/p_salon.jpg" alt="Doğal taş duvarlı, ahşap tavanlı ve tam boy cam cepheli salon" loading="lazy"><figcaption class="mono">Salon · konsept görsel</figcaption></figure><figure><img src="a/p_yatak.jpg" alt="Ahşap çıtalı yatak başı duvarı olan, bahçeye açılan yatak odası" loading="lazy"><figcaption class="mono">Yatak odası · konsept görsel</figcaption></figure><figure><img src="a/p_hol.jpg" alt="Ceviz kasalı açıklıklarla salonu ve yatak odasını bağlayan hol" loading="lazy"><figcaption class="mono">Hol · konsept görsel</figcaption></figure><figure><img src="a/p_entry.jpg" alt="Doğal taş kaplı giriş kütlesi, ceviz kapı ve taş yürüyüş yolu" loading="lazy"><figcaption class="mono">Giriş · konsept görsel</figcaption></figure></div>
- <p class="lede" style="font-size:16px">Yukarıdaki üç boyutlu model bu konsept görsellerin tasarım diliyle kurulmuştur.</p>
+ <h2>Çizimden hesaba, <em>tek masada.</em></h2>
+ <p class="lede">Mimari tasarım ile mühendisliği tek ekipte yürütüyoruz. Fikir, çizim, model ve taşıyıcı sistem birlikte gelişir; proje ilk eskizden uygulamaya tutarlı ilerler.</p>
  <div class="svc">
-  <article><h3>Mimari Proje</h3><p>Yapının planı, kesiti ve görünüşleri; konseptten uygulama çizimlerine.<b>Ruhsat ve uygulama için tek, tutarlı bir proje seti.</b></p><a href="#iletisim">Bilgi alın →</a></article>
-  <article><h3>Tasarım</h3><p>Mekân kurgusu, malzeme, renk ve aydınlatma kararları.<b>Yaşayana göre biçimlenen, ölçüsü belli mekânlar.</b></p><a href="#iletisim">Bilgi alın →</a></article>
-  <article><h3>3D Modelleme</h3><p>Projenin inşaattan önce üç boyutlu olarak kurulması ve görselleştirilmesi.<b>Kararlar şantiyede değil, ekranda verilir.</b></p><a href="#iletisim">Bilgi alın →</a></article>
-  <article><h3>Statik Proje</h3><p>Taşıyıcı sistemin mimariyle birlikte tasarlanması ve hesaplanması.<b>Mimari fikir, taşıyıcı sistemle çelişmeden uygulanır.</b></p><a href="#iletisim">Bilgi alın →</a></article>
- </div>
-</div></section>
-
-<section class="sec gut" id="projeler"><div class="wrap two">
- <div><p class="eyebrow mono">Projeler</p><h2>Projelerimiz.</h2></div>
- <div>
-  <p class="lede" style="margin-top:0">Bu sayfadaki villa, tasarım yaklaşımımızı anlatan kavramsal bir çalışmadır. Güncel projelerimizi Instagram hesabımızda paylaşıyoruz.</p>
-  <p style="margin:28px 0 36px"><a class="btn dark" href="https://www.instagram.com/mimarfadimekaragul/" target="_blank" rel="noopener">Instagram’da projeleri görün</a></p>
- </div>
-</div></section>
-
-<section class="sec gut" id="hakkimizda"><div class="wrap two">
- <div><p class="eyebrow mono">Hakkımızda</p><h2>Mimar Fadime Karagül’ün ofisi.</h2></div>
- <div>
-  <p class="lede" style="margin-top:0">F LINE Mimarlık &amp; Mühendislik, mimari tasarım ile statik projeyi aynı çatı altında yürüten bir ofistir.</p>
-  <ul class="fact" style="margin-top:32px"><li><span>Kurucu</span><span>Mimar Fadime Karagül</span></li><li><span>Hizmetler</span><span>Mimari proje · Tasarım · 3D modelleme · Statik proje</span></li></ul>
+  <div class="svc-list">
+   <article class="svc-item on"><img class="svc-img" src="a/s2-1100.webp" width="1100" height="614" loading="lazy" decoding="async" alt="Doğal taş ve ahşap çıta kaplı giriş cephesi"><span class="n mono">01</span><h3>Mimari Proje</h3><p>Yapının planı, kesiti ve görünüşleri; konseptten uygulama çizimlerine.<b>Ruhsat ve uygulama için tek, tutarlı bir proje seti.</b></p><a href="#iletisim" data-ask="Mimari Proje">Mimari proje için görüşün →</a></article>
+   <article class="svc-item"><img class="svc-img" src="a/s4-1100.webp" width="1100" height="614" loading="lazy" decoding="async" alt="Bahçeye açılan salon, ahşap çıta duvar ve açık basamaklı merdiven"><span class="n mono">02</span><h3>Tasarım</h3><p>Mekân kurgusu, malzeme, renk ve aydınlatma kararları.<b>Yaşayana göre biçimlenen, ölçüsü belli mekânlar.</b></p><a href="#iletisim" data-ask="Tasarım">Tasarım için görüşün →</a></article>
+   <article class="svc-item"><img class="svc-img" src="a/s8-1100.webp" width="1100" height="614" loading="lazy" decoding="async" alt="Havuzlu bahçeden villanın genel görünümü"><span class="n mono">03</span><h3>3D Modelleme</h3><p>Projenin inşaattan önce üç boyutlu kurulması ve görselleştirilmesi.<b>Kararlar şantiyede değil, ekranda verilir.</b></p><a href="#iletisim" data-ask="3D Modelleme">3D modelleme için görüşün →</a></article>
+   <article class="svc-item"><img class="svc-img" src="a/s7-1100.webp" width="1100" height="614" loading="lazy" decoding="async" alt="Kolon, kiriş ve döşemeyi gösteren kavramsal kesit"><span class="n mono">04</span><h3>Statik Proje</h3><p>Taşıyıcı sistemin mimariyle birlikte tasarlanması ve hesaplanması.<b>Mimari fikir, taşıyıcı sistemle çelişmeden uygulanır.</b></p><a href="#iletisim" data-ask="Statik Proje">Statik proje için görüşün →</a></article>
+  </div>
+  <figure class="svc-view">
+   <img class="on" src="a/s2-1100.webp" srcset="a/s2-1100.webp 1100w, a/s2-1920.webp 1920w" sizes="(min-width:901px) 44vw, 1px" width="1100" height="614" loading="lazy" decoding="async" alt="Doğal taş ve ahşap çıta kaplı giriş cephesi" style="object-position:50% 50%">
+   <img src="a/s4-1100.webp" srcset="a/s4-1100.webp 1100w, a/s4-1920.webp 1920w" sizes="(min-width:901px) 44vw, 1px" width="1100" height="614" loading="lazy" decoding="async" alt="Bahçeye açılan salon" style="object-position:42% 50%">
+   <img src="a/s8-1100.webp" srcset="a/s8-1100.webp 1100w, a/s8-1920.webp 1920w" sizes="(min-width:901px) 44vw, 1px" width="1100" height="614" loading="lazy" decoding="async" alt="Villanın genel görünümü" style="object-position:40% 50%">
+   <img src="a/s7-1100.webp" srcset="a/s7-1100.webp 1100w, a/s7-1920.webp 1920w" sizes="(min-width:901px) 44vw, 1px" width="1100" height="614" loading="lazy" decoding="async" alt="Kavramsal kesit" style="object-position:36% 50%">
+   <figcaption class="mono">Konsept görsel</figcaption>
+  </figure>
  </div>
 </div></section>
 
 <section class="sec gut" id="tasarla"><div class="wrap">
  <p class="eyebrow mono">Tasarım stüdyosu</p>
- <h2>Hayalinizdeki yapıyı tasarlayın.</h2>
- <p class="lede">Yapı tipini, cepheyi ve malzemeleri seçin; önizleme anında değişir. Seçiminiz iletişim formuna eklenir, ilk görüşmeye bu fikirle başlarız.</p>
+ <h2>Hayalinizdeki yapıyı <em>tasarlayın.</em></h2>
+ <p class="lede">Aynı yapı, dört malzeme kurgusu. Bir ön ayar seçin, cephe değişsin. Seçiminiz teklif talebinize eklenir.</p>
  <div class="cfg">
-  <div class="cfg-stage"><div id="cfg-view"></div>
-   <div class="cfg-bar"><div><button class="opt" type="button" data-view="0" aria-pressed="false">Ön cephe</button><button class="opt" type="button" data-view="1" aria-pressed="false">Teras</button><button class="opt" type="button" data-view="2" aria-pressed="false">Üstten</button></div><span class="mono">Gerçek zamanlı 3D model · sürükleyerek döndürün</span></div>
+  <div class="cfg-stage">
+   <div class="cfg-view" id="cfg-view">
+    <img id="cfg-base" src="a/c1-1280.webp" width="2400" height="1340" loading="lazy" decoding="async" alt="Seçili ön ayarla villanın giriş cephesi">
+    <img id="cfg-top" alt="" aria-hidden="true">
+    <span class="cfg-edge" id="cfg-edge"></span>
+    <span class="cfg-tag a mono" id="cfg-ta" hidden>Orijinal</span><span class="cfg-tag b mono" id="cfg-tb" hidden></span>
+    <button class="cfg-knob" id="cfg-knob" type="button" role="slider" aria-label="Karşılaştırma çizgisi" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></button>
+   </div>
+   <div class="cfg-bar"><span class="mono">Hazır konsept görselleri · gerçek zamanlı 3D model değildir</span><button class="btn" id="cfg-cmp" type="button" aria-pressed="false" disabled>Orijinalle karşılaştır</button></div>
   </div>
   <div class="cfg-panel">
-<details class="cfg-g" open><summary><span class="mono">Proje tipi</span><i></i></summary><div><button class="opt" type="button" data-c="tip" data-v="iki" aria-pressed="false">İki katlı villa</button><button class="opt" type="button" data-c="tip" data-v="tek" aria-pressed="false">Tek katlı konut</button></div></details><details class="cfg-g" open><summary><span class="mono">Tarz</span><i></i></summary><div><button class="opt" type="button" data-style="sicak" aria-pressed="false">Sıcak modern</button><button class="opt" type="button" data-style="minimal" aria-pressed="false">Minimal</button><button class="opt" type="button" data-style="dogal" aria-pressed="false">Doğal</button></div></details><details class="cfg-g" open><summary><span class="mono">Üst kat cephesi</span><i></i></summary><div><button class="opt" type="button" data-c="cephe" data-v="ahsap" aria-pressed="false">Ahşap kaplama</button><button class="opt" type="button" data-c="cephe" data-v="tas" aria-pressed="false">Doğal taş</button><button class="opt" type="button" data-c="cephe" data-v="siva" aria-pressed="false">Sıva</button></div></details><details class="cfg-g" open><summary><span class="mono">Ahşap tonu</span><i></i></summary><div><button class="opt" type="button" data-c="ton" data-v="acik" aria-pressed="false">Açık meşe</button><button class="opt" type="button" data-c="ton" data-v="koyu" aria-pressed="false">Koyu ceviz</button></div></details><details class="cfg-g" open><summary><span class="mono">Taş</span><i></i></summary><div><button class="opt" type="button" data-c="tas" data-v="bej" aria-pressed="false">Sıcak bej</button><button class="opt" type="button" data-c="tas" data-v="gri" aria-pressed="false">Koyu gri</button></div></details><details class="cfg-g" open><summary><span class="mono">Sıva rengi</span><i></i></summary><div><button class="opt" type="button" data-c="siva" data-v="beyaz" aria-pressed="false">Sıcak beyaz</button><button class="opt" type="button" data-c="siva" data-v="greige" aria-pressed="false">Greige</button><button class="opt" type="button" data-c="siva" data-v="antrasit" aria-pressed="false">Antrasit</button></div></details><details class="cfg-g" open><summary><span class="mono">Doğrama</span><i></i></summary><div><button class="opt" type="button" data-c="dograma" data-v="antrasit" aria-pressed="false">Antrasit</button><button class="opt" type="button" data-c="dograma" data-v="siyah" aria-pressed="false">Siyah</button><button class="opt" type="button" data-c="dograma" data-v="bronz" aria-pressed="false">Bronz</button></div></details><details class="cfg-g" open><summary><span class="mono">Cephe detayı</span><i></i></summary><div><button class="opt" type="button" data-t="sacak" aria-pressed="false">Saçak aydınlatması</button><button class="opt" type="button" data-t="kirici" aria-pressed="false">Ahşap güneş kırıcı</button></div></details><details class="cfg-g" open><summary><span class="mono">Işık</span><i></i></summary><div><button class="opt" type="button" data-c="isik" data-v="gunbatimi" aria-pressed="true">Gün batımı</button><button class="opt" type="button" data-c="isik" data-v="aksam" aria-pressed="false">Akşam</button></div></details>
-   <p id="cfg-sum"></p>
-   <a class="btn" id="cfg-go" href="#iletisim">Bu tasarımla görüşelim</a>
+   <div class="cfg-opts" id="cfg-opts" role="radiogroup" aria-label="Malzeme ön ayarı"></div>
+   <dl class="cfg-sum"><dt>Cephe</dt><dd id="cfg-tas"></dd><dt>Ahşap</dt><dd id="cfg-ahsap"></dd><dt>Doğrama</dt><dd>Koyu bronz</dd></dl>
+   <a class="btn acc" id="cfg-go" href="#iletisim">PROJEM İÇİN TEKLİF AL</a>
   </div>
  </div>
 </div></section>
 
-<section class="sec gut" id="iletisim" style="background:var(--paper)"><div class="wrap two">
- <div><p class="eyebrow mono">İletişim</p><h2>Projenizi birlikte tasarlayalım.</h2>
-  <ul class="fact" style="margin-top:36px"><li><span>Instagram</span><span><a href="https://www.instagram.com/mimarfadimekaragul/" target="_blank" rel="noopener">@mimarfadimekaragul</a></span></li></ul></div>
+<section class="sec gut" id="projeler"><div class="wrap">
+ <div class="two">
+  <div><p class="eyebrow mono">Projeler</p><h2>Projelerimiz.</h2></div>
+  <div>
+   <p class="lede" style="margin-top:0">Bu sayfadaki villa, tasarım yaklaşımımızı anlatan kavramsal bir çalışmadır; tamamlanmış bir F LINE projesi değildir. Güncel çalışmalarımızı Instagram hesabımızda paylaşıyoruz.</p>
+   <p style="margin-top:28px"><a class="btn ink" href="https://www.instagram.com/mimarfadimekaragul/" target="_blank" rel="noopener">Instagram’da projeleri görün</a></p>
+  </div>
+ </div>
+ <div class="gal">
+  <figure><img src="a/s5-1100.webp" srcset="a/s5-1100.webp 1100w, a/s5-1920.webp 1920w" sizes="(min-width:901px) 56vw, 100vw" width="1100" height="614" loading="lazy" decoding="async" alt="Cam korkuluklu üst kat galerisi ve merdiven"><figcaption class="mono">Konsept çalışma · Galeri</figcaption></figure>
+  <figure><img src="a/s6-1100.webp" width="1100" height="614" loading="lazy" decoding="async" alt="Ahşap çıtalı yatak başı duvarı olan ebeveyn yatak odası"><figcaption class="mono">Konsept çalışma · Yatak odası</figcaption></figure>
+  <figure><img src="a/s3-1100.webp" width="1100" height="614" loading="lazy" decoding="async" alt="Taş kaplı giriş nişi ve koyu bronz kapı"><figcaption class="mono">Konsept çalışma · Giriş</figcaption></figure>
+ </div>
+</div></section>
+
+<section class="sec gut" id="hakkimizda"><div class="wrap two">
+ <figure><img class="about-img" src="a/s1-1100.webp" srcset="a/s1-1100.webp 1100w, a/s1-1920.webp 1920w" sizes="(min-width:901px) 44vw, 100vw" width="1100" height="614" loading="lazy" decoding="async" alt="Cephesinde F LINE yazan konsept villa, alacakaranlıkta"><figcaption class="mono cred">Konsept görsel</figcaption></figure>
+ <div>
+  <p class="eyebrow mono">Hakkımızda</p>
+  <h2>Mimar Fadime Karagül’ün <em>ofisi.</em></h2>
+  <p class="lede">F LINE Mimarlık &amp; Mühendislik, mimari tasarım ile statik projeyi aynı çatı altında yürüten bir ofistir.</p>
+  <ul class="fact"><li><span>Kurucu</span><span>Mimar Fadime Karagül</span></li><li><span>Hizmetler</span><span>Mimari proje · Tasarım · 3D modelleme · Statik proje</span></li><li><span>Instagram</span><span><a href="https://www.instagram.com/mimarfadimekaragul/" target="_blank" rel="noopener">@mimarfadimekaragul</a></span></li></ul>
+ </div>
+</div></section>
+
+<section class="sec gut" id="iletisim"><div class="wrap two">
+ <div>
+  <p class="eyebrow mono">İletişim</p>
+  <h2>Projenizi birlikte <em>tasarlayalım.</em></h2>
+  <p class="lede">Arsanızı, ihtiyacınızı ve aklınızdaki yapıyı anlatın; ilk görüşmeyi bu bilgilerle planlayalım.</p>
+  <ul class="fact"><li><span>Instagram</span><span><a href="https://www.instagram.com/mimarfadimekaragul/" target="_blank" rel="noopener">@mimarfadimekaragul</a></span></li></ul>
+ </div>
  <form id="form" novalidate>
   <label>Ad Soyad<input id="f-ad" name="ad" type="text" autocomplete="name"></label>
   <label>Telefon<input id="f-tel" name="tel" type="tel" autocomplete="tel"></label>
   <label>E-posta<input id="f-mail" name="mail" type="email" autocomplete="email"></label>
   <label>Proje Türü<select id="f-tur" name="tur"><option>Konut</option><option>Villa</option><option>Ticari yapı</option><option>İç mekân</option><option>Statik proje</option><option>Diğer</option></select></label>
   <label class="wide">Proje Konumu<input id="f-konum" name="konum" type="text"></label>
+  <label class="wide" id="f-konu-row" hidden>Talep konusu<textarea id="f-konu" name="konu" rows="2" readonly style="resize:none"></textarea></label>
   <label class="wide">Proje Hakkında<textarea id="f-not" name="not" rows="4"></textarea></label>
-  <p id="form-msg" hidden>Demo sürümü: bu form henüz bir sunucuya bağlı değil, mesajınız gönderilmedi. Şimdilik Instagram üzerinden yazabilirsiniz.</p>
-  <div class="wide"><button class="btn dark" type="submit">Görüşme talebi gönder</button></div>
+  <div id="form-msg" role="status" hidden>
+   <p>Bu form henüz bir sunucuya bağlı değil; talebiniz gönderilmedi. Talep metnini kopyalayıp Instagram üzerinden iletebilirsiniz.</p>
+   <div class="row"><button class="btn ink" id="form-copy" type="button">Talep metnini kopyala</button><a class="btn" href="https://ig.me/m/mimarfadimekaragul" target="_blank" rel="noopener">Instagram’da mesaj yaz</a></div>
+  </div>
+  <div class="wide"><button class="btn ink" type="submit">Görüşme talebi oluştur</button></div>
  </form>
 </div></section>
 </main>
-<footer class="gut"><div class="wrap"><span>© 2026 F LINE Mimarlık &amp; Mühendislik</span><a href="#track">Başa dön ↑</a><span>Tasarım: SYNCRO</span></div></footer>
-<script src="app.js"></script>
 
+<footer class="gut"><div class="wrap"><span>© 2026 F LINE Mimarlık &amp; Mühendislik</span><a href="#top">Başa dön ↑</a><span>Tasarım: SYNCRO</span></div></footer>
+<script src="app.js" defer></script>
 </body>
 </html>
