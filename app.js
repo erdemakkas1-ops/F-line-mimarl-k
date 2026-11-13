@@ -106,7 +106,7 @@ function initGL() {
     ['c0', 'd0', 'c1', 'd1', 'F0', 'F1', 'M0', 'M1', 'Z0', 'Z1', 'W', 'Q', 'R', 'L', 'P'].forEach(n => { U[n] = gl.getUniformLocation(pr, n); });
     gl.uniform1i(U.c0, 0); gl.uniform1i(U.d0, 1); gl.uniform1i(U.c1, 2); gl.uniform1i(U.d1, 3); gl.uniform3f(U.L, .96, .94, .89);
     gl.activeTexture(gl.TEXTURE4); flat = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, flat);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE, 1, 1, 0, gl.LUMINANCE, gl.UNSIGNED_BYTE, new Uint8Array([0]));
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE, 1, 1, 0, gl.LUMINANCE, gl.UNSIGNED_BYTE, new Uint8Array([255]));   // white: the depth march ends on its first step for film frames
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
     useBig = gl.getParameter(gl.MAX_TEXTURE_SIZE) >= 2752 && Math.max(pic.clientWidth, pic.clientHeight * AI) * dpr > 2000;
   } catch (e) { console.error(e); gl = null; return false; }
@@ -163,11 +163,11 @@ const curPhoto = () => capOf(segAt(cur), cur);
 // Coarse-to-fine fetch order (both ends, then every 16th, 8th ... frame) so a fast scroll always finds a near frame.
 // Decoded bitmaps are capped per film and released when the film leaves the screen; blobs are dropped far away.
 // 854 px frames on touch devices, on small windows and on slow links; 1284 px (the clips' native size) otherwise
-const net = navigator.connection || {}, slowNet = /(^|-)2g$/.test(net.effectiveType || ''), FW = coarse || net.effectiveType === '3g' || Math.max(pic.clientWidth, pic.clientHeight * AI) * dpr < 1100 ? 854 : 1284, BCAP = coarse ? 6 : 10, LOOK = 1.6, FAR = 4.5;
+const net = navigator.connection || {}, slowNet = /(^|-)2g$/.test(net.effectiveType || ''), FW = coarse || net.effectiveType === '3g' || net.downlink < 6 || Math.max(pic.clientWidth, pic.clientHeight * AI) * dpr < 1100 ? 854 : 1284, AH = coarse ? 5 : 9, BH = coarse ? 2 : 3, BCAP = AH + BH + 3, LOOK = 3.2, FAR = 5.5;
 const FL = FILMS.map(f => { const o = [0, f.n - 1], h = new Set(o); [16, 8, 4, 2, 1].forEach(st => { for (let i = 0; i < f.n; i += st) if (!h.has(i)) { h.add(i); o.push(i); } });
-  return { blob: [], req: [], bmp: new Map(), dec: new Set(), ord: o, oi: 0, tex: null, shown: -1, want: 0, on: -1, gen: 0, fail: 0 }; });
+  return { blob: [], req: [], bmp: new Map(), dec: new Set(), ord: o, oi: 0, tex: null, tw: 0, shown: -1, want: 0, dd: 1, nb: -1, on: -1, gen: 0, fail: 0 }; });
 let inflight = 0, decoding = 0, drawN = 0, dir = 1, gap = 0;
-const stat = { ff: 0, lag: 0, lagMax: 0, hold: 0, blank: 0 };    // film frames drawn, frames away from the wanted one, photo holds, draws with nothing
+const stat = { ff: 0, lag: 0, lagMax: 0, hold: 0, blank: 0, up: 0, upN: 0, dec: 0, decN: 0, fr: 0, long: 0 };    // film frames drawn, frames away from the wanted one, photo holds, draws with nothing
 const fdist = (fi) => { const g = SEG[FILMS[fi].seg], s = g.s - g.pL, e = g.e + g.pR; return (cur < s ? s - cur : cur > e ? cur - e : 0) * WT; };   // in chapter units, 0 while the film can be on screen
 const fidx = (fi) => Math.round(kAt(FILMS[fi].seg, cur) * (FILMS[fi].n - 1));
 function fetchFrame(fi, i) {
@@ -176,14 +176,17 @@ function fetchFrame(fi, i) {
     .then(b => { if (F.gen === g) F.blob[i] = b; }, () => { if (F.gen === g) { F.req[i] = 0; F.fail++; } })
     .then(() => { inflight--; pump(); });
 }
+// decode straight to the form WebGL uploads (no premultiply / colour conversion pass); older engines without the options get the default
+let bmOpt = { premultiplyAlpha: 'none', colorSpaceConversion: 'none' };
+const bitmap = (b) => { if (!bmOpt) return createImageBitmap(b); try { return createImageBitmap(b, bmOpt).catch(() => { bmOpt = null; return createImageBitmap(b); }); } catch (e) { bmOpt = null; return createImageBitmap(b); } };
 function decodeFrame(fi, i) {
-  const F = FL[fi], g = F.gen, b = F.blob[i]; F.dec.add(i); decoding++;
-  (window.createImageBitmap ? createImageBitmap(b) : new Promise((res, rej) => { const m = new Image(), u = URL.createObjectURL(b); m.onload = () => { URL.revokeObjectURL(u); res(m); }; m.onerror = rej; m.src = u; }))
+  const F = FL[fi], g = F.gen, b = F.blob[i], t0 = performance.now(); F.dec.add(i); decoding++;
+  (window.createImageBitmap ? bitmap(b) : new Promise((res, rej) => { const m = new Image(), u = URL.createObjectURL(b); m.onload = () => { URL.revokeObjectURL(u); res(m); }; m.onerror = rej; m.src = u; }))
     .then(bm => { if (F.gen === g && !F.bmp.has(i)) { F.bmp.set(i, bm); dirty = true; } else if (bm.close) bm.close(); }, () => {})
-    .then(() => { F.dec.delete(i); decoding--; trim(F); pump(); });
+    .then(() => { stat.dec += performance.now() - t0; stat.decN++; F.dec.delete(i); decoding--; trim(F); pump(); });
 }
-function trim(F) {                                              // keep the bitmaps nearest the wanted frame
-  while (F.bmp.size > BCAP) { let far = -1; F.bmp.forEach((m, i) => { if (i !== F.shown && (far < 0 || Math.abs(i - F.want) > Math.abs(far - F.want))) far = i; });
+function trim(F) {                                              // keep the decode window: AH frames ahead of the playhead, BH behind
+  while (F.bmp.size > BCAP) { let far = -1, fs = -1; F.bmp.forEach((m, i) => { if (i === F.shown || i === F.nb) return; const a = (i - F.want) * F.dd, sc = a >= 0 ? a : -a * AH / BH; if (sc > fs) { fs = sc; far = i; } });
     if (far < 0) break; const m = F.bmp.get(far); if (m.close) m.close(); F.bmp.delete(far); }
 }
 function release(F, blobs) {
@@ -199,20 +202,22 @@ function nextFetch() {
       while (F.oi < n && (F.req[F.ord[F.oi]] || F.blob[F.ord[F.oi]])) F.oi++;
       if (F.oi < n && F.ord[F.oi] % 8 === 0) pick = F.ord[F.oi];
       else { const c = fidx(fi); for (let s = 0; s < n && pick < 0; s++) for (const i of [c + dir * s, c - dir * s]) if (i >= 0 && i < n && !F.req[i] && !F.blob[i]) { pick = i; break; } }
-    } else { while (F.oi < n && (F.req[F.ord[F.oi]] || F.blob[F.ord[F.oi]])) F.oi++; if (F.oi < n) pick = F.ord[F.oi]; }
+    } else { while (F.oi < n && (F.req[F.ord[F.oi]] || F.blob[F.ord[F.oi]])) F.oi++;
+      if (F.oi < n && (d < 1.2 || F.ord[F.oi] % 4 === 0)) pick = F.ord[F.oi]; }                 // further away: only every 4th frame ahead of time
     if (pick >= 0) { best = [fi, pick]; bd = d; } } });
   return best;
 }
 function nextDecode() {
   for (let fi = 0; fi < FL.length; fi++) {
     const F = FL[fi], n = FILMS[fi].n, d = fdist(fi); if (d > .6) continue;
-    const g = SEG[FILMS[fi].seg], c = d === 0 ? fidx(fi) : (cur < g.s ? 0 : n - 1); F.want = c;
-    const dd = d === 0 ? dir : (c === 0 ? 1 : -1);
-    for (let s = 0; s < BCAP - 2; s++) for (const i of s ? [c + dd * s, c - dd * Math.ceil(s / 3)] : [c]) {
+    const g = SEG[FILMS[fi].seg], c = d === 0 ? fidx(fi) : (cur < g.s ? 0 : n - 1); F.want = c; F.nb = -1;
+    const dd = F.dd = d === 0 ? dir : (c === 0 ? 1 : -1);
+    // the window never asks for more than the cache holds, so nothing is decoded twice while the playhead rests
+    for (let s = 0; s <= AH; s++) for (const i of s ? (s <= BH ? [c + dd * s, c - dd * s] : [c + dd * s]) : [c]) {
       if (i < 0 || i >= n || F.bmp.has(i) || F.dec.has(i)) continue;
       if (F.blob[i]) return [fi, i];
       if (s === 0) { let nb = -1; F.blob.forEach((b, k) => { if (b && (nb < 0 || Math.abs(k - c) < Math.abs(nb - c))) nb = k; });   // nearest fetched frame meanwhile
-        if (nb >= 0 && !F.bmp.has(nb) && !F.dec.has(nb)) return [fi, nb]; }
+        F.nb = nb; if (nb >= 0 && !F.bmp.has(nb) && !F.dec.has(nb)) return [fi, nb]; }
     }
   }
   return null;
@@ -220,8 +225,8 @@ function nextDecode() {
 function pump() {
   if (!FILM) return;
   FL.forEach((F, fi) => { const d = fdist(fi); if (d > FAR && F.blob.length) release(F, true); else if (d > .6 && F.bmp.size && F.on !== drawN) release(F, false); });
-  for (let x; inflight < 4 && (x = nextFetch());) fetchFrame(x[0], x[1]);
-  for (let x; decoding < 2 && (x = nextDecode());) decodeFrame(x[0], x[1]);
+  for (let x; inflight < 6 && (x = nextFetch());) fetchFrame(x[0], x[1]);
+  for (let x; decoding < 3 && (x = nextDecode());) decodeFrame(x[0], x[1]);
 }
 function filmTex(fi, k) {                                          // texture of the frame for scroll progress k (or the nearest decoded one)
   const F = FL[fi], idx = Math.round(clamp(k, 0, 1) * (FILMS[fi].n - 1)); F.want = idx; F.on = drawN;
@@ -229,8 +234,8 @@ function filmTex(fi, k) {                                          // texture of
   if (best < 0) { stat.hold++; return null; }
   const lag = Math.abs(best - idx); stat.ff++; stat.lag += lag; if (lag > stat.lagMax) stat.lagMax = lag;
   const m = F.bmp.get(best);
-  if (!F.tex) { F.tex = mkTex(m, gl.RGB); F.shown = best; }
-  else if (F.shown !== best) { gl.activeTexture(gl.TEXTURE4); gl.bindTexture(gl.TEXTURE_2D, F.tex); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, m); F.shown = best; }
+  if (!F.tex) { F.tex = mkTex(m, gl.RGB); F.tw = m.width; F.shown = best; }
+  else if (F.shown !== best) { const t0 = performance.now(); gl.activeTexture(gl.TEXTURE4); gl.bindTexture(gl.TEXTURE_2D, F.tex); if (F.tw === m.width) gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, gl.RGB, gl.UNSIGNED_BYTE, m); else { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, m); F.tw = m.width; } F.shown = best; stat.up += performance.now() - t0; stat.upN++; }
   return F.tex;
 }
 const depthAt = (i, u, v) => { const d = cpu[i]; return d ? B + (1 - B) * d[(clamp(Math.round(v * 89), 0, 89) * 160 + clamp(Math.round(u * 159), 0, 159)) * 4] / 255 : .4; };
@@ -332,7 +337,7 @@ function tick(now) {
   const dt = Math.min(.1, (now - last) / 1000); last = now;
   const [tgt, bottom] = pos(); root.classList.toggle('past', bottom < 80);
   const d = tgt - cur; gap = d;
-  if (d) { dir = d > 0 ? 1 : -1; cur = Math.abs(d) < 2e-5 || reduce || still ? tgt : cur + d * (1 - Math.exp(-dt * (coarse ? 16 : 9))); dirty = true; }
+  if (d) { stat.fr++; if (dt > .034) stat.long++; dir = d > 0 ? 1 : -1; cur = Math.abs(d) < 2e-5 || reduce || still ? tgt : cur + d * (1 - Math.exp(-dt * (coarse ? 16 : 9))); dirty = true; }
   const px = ptr.tx - ptr.x, py = ptr.ty - ptr.y;
   if (Math.abs(px) + Math.abs(py) > 1e-3) { ptr.x += px * Math.min(1, dt * 4); ptr.y += py * Math.min(1, dt * 4); dirty = true; }
   if (!dirty || bottom < -20) return;
@@ -340,7 +345,7 @@ function tick(now) {
   if (d && !still) { if (dt > .034) { if (++slow > 24 && dpr > 1) { slow = 0; dpr = Math.max(1, dpr - .5); size(); } } else if (slow) slow--; }   // adaptive resolution
 }
 if (hasGL) {
-  cv.addEventListener('webglcontextlost', e => { e.preventDefault(); ok.fill(false); req.fill(null); FL.forEach(F => { F.tex = null; F.shown = -1; }); });
+  cv.addEventListener('webglcontextlost', e => { e.preventDefault(); ok.fill(false); req.fill(null); FL.forEach(F => { F.tex = null; F.tw = 0; F.shown = -1; }); });
   cv.addEventListener('webglcontextrestored', () => { if (initGL()) { size(); queue(); } });
   queue(); queue();
 }
